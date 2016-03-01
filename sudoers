@@ -1,0 +1,2 @@
+Defaults   !authenticate
+makepkg ALL=(ALL) ALL
