@@ -6,6 +6,10 @@ directory that contains the PKGBUIL for the package you want to build.
 
 Example run command:
 ```
-docker -ti run -v <PKGBUIL dir>:/work ArchLinux-docker-makepkg:latest
+docker -ti run -v <PKGBUILD dir>:/work ArchLinux-docker-makepkg:latest
 ```
 
+If you want to use a pre-built image, use:
+```
+docker pull aitorpazos/archlinux-docker-makepkg
+```
