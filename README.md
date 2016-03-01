@@ -1,8 +1,8 @@
 # ArchLinux-docker-makepkg
 A Docker image that allows building ArchLinux packages on any distro.
 
-Once builded, it will expect that the /work volume should be mounted on the
-directory that contains the PKGBUIL for the package you want to build.
+Once built, it will expect that the /work volume is mounted on the
+directory that contains the PKGBUILD for the package you want to build.
 
 Example run command:
 ```
