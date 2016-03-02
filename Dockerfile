@@ -5,7 +5,7 @@ MAINTAINER Aitor Pazos <mail@aitorpazos.es>
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm sudo fakeroot binutils git make gcc boost && \
+    pacman -Syu --noconfirm base-devel git boost pkgbuild-introspection && \
     pacman-db-upgrade
 COPY sudoers /etc/sudoers
 RUN chown -c root:root /etc/sudoers && \
@@ -21,4 +21,4 @@ CMD useradd -u ${USER_UID} -d /home/makepkg -m makepkg && \
            pacman -Syu --noconfirm && \
            su -l makepkg -c "git config --global user.name $GIT_NAME" && \
            su -l makepkg -c "git config --global user.email $GIT_EMAIL" && \
-           su -l makepkg -c "cd /work && makepkg --noconfirm -si"
+           su -l makepkg -c "cd /work && makepkg --noconfirm -si && mksrcinfo"
