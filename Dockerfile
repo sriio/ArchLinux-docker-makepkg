@@ -7,6 +7,7 @@ RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
     pacman -Syu --noconfirm base-devel git boost pkgbuild-introspection && \
     pacman-db-upgrade && \
+    update-ca-trust && \
     pacman -Scc --noconfirm
 COPY sudoers /etc/sudoers
 RUN chown -c root:root /etc/sudoers && \
