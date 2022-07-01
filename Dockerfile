@@ -1,11 +1,10 @@
 # This Dockerfile builds an image that can be used to build ArchLinux packages
 
-FROM base/archlinux:latest 
-MAINTAINER Aitor Pazos <mail@aitorpazos.es>
+FROM archlinux:latest 
 
 RUN pacman-key --init && \
     pacman -Sy --noconfirm archlinux-keyring && \
-    pacman -Syu --noconfirm base-devel git boost pkgbuild-introspection && \
+    pacman -Syu --noconfirm base-devel git boost && \
     pacman-db-upgrade && \
     update-ca-trust && \
     pacman -Scc --noconfirm
@@ -25,4 +24,4 @@ CMD useradd -u ${USER_UID} -d /home/makepkg -m makepkg && \
            pacman -Scc --noconfirm && \
            su -l makepkg -c "git config --global user.name $GIT_NAME" && \
            su -l makepkg -c "git config --global user.email $GIT_EMAIL" && \
-           su -l makepkg -c "cd /work && makepkg --noconfirm -si && mksrcinfo"
+           su -l makepkg -c "cd /work && makepkg --noconfirm -s"
